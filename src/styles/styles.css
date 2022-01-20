@@ -246,4 +246,64 @@
 .products__item.topSells {
   top: 20.4%;
 }
+
+.wishlistPage {
+  background-color: #fafafa;
+}
+
+.wishlistPage__img {
+  width: 100%;
+}
+
+.wishlistPage__container {
+  margin-top: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.wishlistPage__container--left {
+  width: 25%;
+}
+
+.wishlistPage__container--right {
+  width: 50%;
+}
+
+.wishlisttab {
+  background-color: white;
+  width: 20vw;
+  height: 5vh;
+  margin-left: 15px;
+  margin-bottom: 8px;
+}
+
+.active {
+  border-style: solid;
+  border-width: 0px 0px 0px 3px;
+  border-color: grey grey grey #29b9ad;
+}
+
+.wishlist {
+  background-color: white;
+  width: 60%;
+}
+
+.wishlist__containerProduct {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: transparent;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.wishlist__containerProduct .product-card__content {
+  margin: 50px 50px !important;
+}
 /*# sourceMappingURL=styles.css.map */

@@ -1,14 +1,16 @@
 .wishlist {
-<<<<<<< HEAD
-    background-color: #fafafa
-=======
-width: 100%;
-        background: red;
+  background-color: white;
+  width: 60%;
+  //   width: 100%;
 
-    &__containerProduct{
-        display: flex;
-    justify-content: space-between;
+  &__containerProduct {
+    display: flex;
+    justify-content: space-around;
     background-color: transparent;
+    flex-wrap: wrap;
+
+    & .product-card__content {
+      margin: 50px 50px !important;
     }
->>>>>>> c65840e457bdc330938c08fc092a28b4b070e37e
+  }
 }

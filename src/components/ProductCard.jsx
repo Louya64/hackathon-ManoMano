@@ -6,12 +6,24 @@ import redHeart from "../assets/PNG/redHeart.png";
 import { BsCheck2Circle } from "react-icons/bs";
 
 
-const ProductCard = ({ title, image, price, review }) => {
+const ProductCard = ({ title, image, price, id_product }) => {
   const [favoriteActive, setFavoriteActive] = useState(false);
   const [wishlistSelect, setWishlistSelect] = useState(false);
   const [wishlists, setWishlists] = useState([]);
   const [createList, setCreateList] = useState(false);
   const [listName, setListName] = useState("");
+
+  const handleAddProduct = (idList) => {
+    axios.post(`http://localhost:8000/api/lists_products`, {id_product: id_product, id_list: idList}, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: false,
+    })
+    setFavoriteActive(true);
+    setWishlistSelect(false); 
+  }
 
   const handleCreateList = (e) => {
     e.preventDefault();
@@ -26,6 +38,12 @@ const ProductCard = ({ title, image, price, review }) => {
     .catch((err) => console.log(err));
     setCreateList(false);
   }
+
+  useEffect(() => {
+    id_product && axios.get(`http://localhost:8000/api/lists_products/products/${id_product}`)
+    .then((res) => res.data)
+    .then((data) => data.length ? setFavoriteActive(true) : "")
+  }, [])
 
   useEffect(() => {
     axios.get(`http://localhost:8000/api/lists`)
@@ -97,7 +115,12 @@ const ProductCard = ({ title, image, price, review }) => {
                       </input>
                       <button onClick={(e) => handleCreateList(e)}>👌</button></form>)}
                   </li>
-                  {wishlists && wishlists.map((list, index) => (<li key={index} className="extend__list-div__ul__list-li">{list.name}</li>))}
+                  {wishlists && wishlists.map((list, index) =>
+                  (<li
+                  key={index}
+                  className="extend__list-div__ul__list-li"
+                  onClick={() => handleAddProduct(list.id_list)}
+                  >{list.name}</li>))}
                 </ul>
               </div>)}  
     </div>

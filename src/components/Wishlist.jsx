@@ -4,7 +4,7 @@ import axios from "axios";
 import "../styles/_wishlist.scss";
 import ProductCard from "./ProductCard";
 
-const id_list = 3;
+const id_list = 10;
 
 const Wishlist = () => {
   const [favorites, setFavorites] = useState();
@@ -28,10 +28,6 @@ const Wishlist = () => {
 
   return (
     <div className="wishlist">
-      <WishListTab activate={true}/>
-      <WishListTab activate={false}/>
-      <h1>My favorites</h1>
-      <p>2 products</p>
       <div className="wishlist__containerProduct">
         {favorites &&
           favorites.map((product) => (
