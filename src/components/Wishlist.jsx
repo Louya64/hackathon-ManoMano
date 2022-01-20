@@ -1,34 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+// import wishlist from "../assets/backgrounds/wishlist.png";
+import "../styles/_wishlist.scss";
+import ProductCard from "./ProductCard";
 
+const id_list = 10;
 
 const Wishlist = () => {
-    const [favorite, setFavorite] = useState();
+  const [favorites, setFavorites] = useState();
+  let productList = [];
 
-    useEffect(()=>{
-        axios
-        .get('localhost:8000/api/lists_products')
-        // .then((response)=> response.data[0])
-        .then((res)=> console.log(res))
-        // .then((data)=> setFavorite(data));
-},[]);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/api/lists_products/${id_list}`)
+      .then((res) => {
+        res.data.map((product) => {
+          axios
+            .get(`http://localhost:8000/api/products/${product.id_product}`)
+            .then((res) => {
+              productList.push(res.data);
+              setFavorites((favorites) => [...productList]);
+            });
+        });
+      });
+  }, []);
+  console.log(favorites);
+
   return (
     <div className="wishlist">
-      <h1>My favorites</h1>
-      <p>2 products</p>
-      <div className='wishlist__containerProduct'>
-          {favorite && 
-            favorite.map((favorite, index)=>(
-                <Wishlist
-                    id={favorite.id}
-                    key={index}
-                    />
-            ))
-        }
-
+      <div className="wishlist__containerProduct">
+        {favorites &&
+          favorites.map((product) => (
+            <ProductCard
+              key={product.id_product}
+              image={require("../assets/productsImg/" + product.picture)}
+              title={product.title}
+              price={product.price}
+            />
+          ))}
       </div>
     </div>
   );
-}
+};
 
 export default Wishlist;

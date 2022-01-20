@@ -1,0 +1,16 @@
+.wishlist {
+  background-color: white;
+  width: 60%;
+  //   width: 100%;
+
+  &__containerProduct {
+    display: flex;
+    justify-content: space-around;
+    background-color: transparent;
+    flex-wrap: wrap;
+
+    & .product-card__content {
+      padding: 50px;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.wishlistPage {
+  background-color: #fafafa;
+  &__img {
+    width: 100%;
+  }
+  &__container {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+
+    &--left {
+      width: 25%;
+    }
+    &--right {
+      width: 50%;
+    }
+  }
+}

@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Wishlist from "./components/Wishlist";
 import App from "./App";
 import {
   BrowserRouter,
@@ -9,13 +8,14 @@ import {
   Route
 } from "react-router-dom";
 import "./styles/styles.scss";
+import WishlistPage from "./components/WishlistPage";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<App />}/> 
-      <Route path="/wishlist" element={<Wishlist />} />
+      <Route path="/wishlist-page" element={<WishlistPage />} />
     </Routes>
     </BrowserRouter>
   </React.StrictMode>,
