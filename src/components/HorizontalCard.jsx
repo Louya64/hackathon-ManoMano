@@ -9,6 +9,7 @@ const HorizontalCard = ({
   id_list,
   id_product,
   setIsActive,
+  setDeleteOk
 }) => {
   const handleDeleteProduct = (id_list, id_product) => {
     axios.delete(
@@ -19,6 +20,7 @@ const HorizontalCard = ({
       }
     );
     setIsActive(false);
+    setDeleteOk(true);
   };
   return (
     <div className="horizontal-card">

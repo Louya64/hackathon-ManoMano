@@ -15,7 +15,7 @@ const WishlistPage = () => {
       .then((res) => res.data)
       .then((data) => setLists(data));
   }, []);
-  console.log(lists, "TODISPLAY");
+  
   return (
     <div className="wishlistPage">
       <img className="wishlistPage__img" src={wishlisthead} alt="" />
