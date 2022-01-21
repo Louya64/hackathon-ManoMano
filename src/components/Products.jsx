@@ -7,13 +7,14 @@ import { Link } from "react-router-dom";
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [dropDown, setDropDown] = useState(false);
+  
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/products`)
       .then((rep) => rep.data)
       .then((data) => setProducts(data));
   }, []);
-  console.log(products);
+
   return (
     <div className="products">
       <img

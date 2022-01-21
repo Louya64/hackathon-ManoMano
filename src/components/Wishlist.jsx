@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 // import wishlist from "../assets/backgrounds/wishlist.png";
 import "../styles/_wishlist.scss";
-import ProductCard from "./ProductCard";
+import HorizontalCard from "./HorizontalCard";
 
-const id_list = 10;
 
-const Wishlist = () => {
+
+const Wishlist = ({toDisplay}) => {
   const [favorites, setFavorites] = useState();
   let productList = [];
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/lists_products/${id_list}`)
+      .get(`http://localhost:8000/api/lists_products/${toDisplay}`)
       .then((res) => {
         res.data.map((product) => {
           axios
@@ -23,7 +23,7 @@ const Wishlist = () => {
             });
         });
       });
-  }, []);
+  }, [toDisplay]);
   console.log(favorites);
 
   return (
@@ -31,7 +31,7 @@ const Wishlist = () => {
       <div className="wishlist__containerProduct">
         {favorites &&
           favorites.map((product) => (
-            <ProductCard
+            <HorizontalCard
               key={product.id_product}
               image={require("../assets/productsImg/" + product.picture)}
               title={product.title}
