@@ -7,15 +7,15 @@ import axios from "axios";
 
 const WishlistPage = () => {
   const [lists, setLists] = useState([]);
-  const [toDisplay, setToDisplay] = useState()
-  
+  const [toDisplay, setToDisplay] = useState();
+
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/lists")
       .then((res) => res.data)
       .then((data) => setLists(data));
   }, []);
-  console.log(lists,'TODISPLAY')
+  
   return (
     <div className="wishlistPage">
       <img className="wishlistPage__img" src={wishlisthead} alt="" />
@@ -35,7 +35,10 @@ const WishlistPage = () => {
               );
             })}
         </div>
-        <Wishlist toDisplay={toDisplay} className="wishlistPage__container--right" />
+        <Wishlist
+          toDisplay={toDisplay}
+          className="wishlistPage__container--right"
+        />
       </div>
       <img className="wishlistPage__img" src={wishlistfooter} alt="" />
     </div>

@@ -23,14 +23,15 @@ const WishListTab = ({ activate, name, id, setTodisplay }) => {
 
   useEffect(() => {
     active ? setActive(true) : setActive(false);
-  }, []);
+  }, [active]);
 
   return (
     <div
       className={active ? "wishlisttab active" : "wishlisttab"}
       ref={tabRef}
       onClick={() => {
-        setActive(!active); setTodisplay(id) ;
+        setActive(!active);
+        setTodisplay(id);
       }}
     >
       {name}

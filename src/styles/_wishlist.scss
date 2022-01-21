@@ -6,9 +6,9 @@
   &__containerProduct {
     display: flex;
     justify-content: space-around;
-    background-color: transparent;
+    background-color: #fafafa;
     flex-wrap: wrap;
-
+    margin-bottom: 2vw;
     & .product-card__content {
       margin: 50px 50px !important;
     }
